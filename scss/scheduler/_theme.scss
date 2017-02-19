@@ -12,11 +12,16 @@ $modal-header-border-color: #cccccc;
     .k-scheduler-toolbar,
     .k-scheduler-footer {
         @include appearance( header );
+        background-clip: padding-box;
     }
 
 
     //Scheduler navigation
     .k-scheduler-navigation {
+
+        li {
+            background-clip: padding-box;
+        }
 
         .k-nav-today,
         .k-nav-prev,
@@ -33,6 +38,7 @@ $modal-header-border-color: #cccccc;
 
         li {
             @include appearance( button );
+            background-clip: padding-box;
 
             &.k-state-hover { @include appearance( hovered-button ); }
             &.k-state-selected { @include appearance( pressed-button ); }
@@ -45,6 +51,7 @@ $modal-header-border-color: #cccccc;
 
         li {
             @include appearance( button );
+            background-clip: padding-box;
 
             &.k-state-hover { @include appearance( hovered-button ); }
         }
