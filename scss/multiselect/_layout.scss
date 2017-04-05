@@ -9,7 +9,6 @@
         @include compact {
             padding: ($input-padding-y / 4);
         }
-
         .k-loading-hidden {
             visibility: hidden;
         }
@@ -83,11 +82,19 @@
             width: auto;
         }
 
+        // Clear value
+        .k-clear-value {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
         // Icons
         .k-i-loading {
             position: absolute;
             right: $padding-x;
             top: $padding-y-lg;
         }
+
     }
 }
