@@ -13,12 +13,17 @@
             width: button-inner-size();
             border-width: 0;
 
-            > .k-state-selected {
-                @include appearance( pressed-button );
+            &:hover {
+                @include appearance( hovered-button );
+            }
+
+            > .k-state-selected,
+            > .k-state-active {
+                color: darken($text-color, 25%);
+                @include appearance( hovered-button );
+                box-shadow: inset $button-focused-shadow;
             }
         }
-        .k-link-increase > .k-icon {}
-        .k-link-decrease > .k-icon { transform: translateY(-$padding-y); }
 
         // Hovered state
         .k-state-hover {
@@ -27,13 +32,16 @@
             .k-select { @include appearance( hovered-button ); }
         }
 
-        // Selected state
-        .k-state-active {
+        // Focused state
+        .k-state-focused {
             @include appearance( focused-input );
-
-            .k-select { @include appearance( active-button ); }
         }
 
+    }
+
+    .k-numeric-wrap.k-state-invalid {
+        border-color: $error;
+        color: $error;
     }
 
 }

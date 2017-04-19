@@ -3,6 +3,8 @@
     // Base
     .k-numerictextbox {
 
+        .k-link-decrease > .k-icon { transform: translateY(-$padding-y / 2); }
+
         // Compact
         @include compact {
             .k-input {
@@ -14,4 +16,8 @@
         }
     }
 
+    .k-numeric-wrap .k-i-warning {
+        align-self: center;
+        margin-right: $spacer-x / 2;
+    }
 }

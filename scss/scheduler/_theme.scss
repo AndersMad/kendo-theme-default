@@ -41,7 +41,7 @@ $modal-header-border-color: #cccccc;
             background-clip: padding-box;
 
             &.k-state-hover { @include appearance( hovered-button ); }
-            &.k-state-selected { @include appearance( pressed-button ); }
+            &.k-state-selected { @include fill( $selected-text, $selected-bg, $selected-border, none ); }
         }
     }
 
@@ -133,13 +133,6 @@ $modal-header-border-color: #cccccc;
 
 @include exports("scheduler-edit-form/theme") {
 
+    .k-scheduler-edit-form {}
 
-    .k-popup-edit-form {}
-
-
-    .k-popup-edit-form .k-edit-buttons {
-        border-color: $modal-header-border-color;
-    }
-    .k-popup-edit-form .k-edit-buttons .k-button {}
-    .k-popup-edit-form .k-edit-buttons .k-button {}
 }

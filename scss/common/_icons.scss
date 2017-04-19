@@ -24,6 +24,7 @@
         text-transform: none;
         text-decoration: none;
         display: inline-block;
+        vertical-align: middle;
 
         &::before {
             vertical-align: baseline;
@@ -148,6 +149,7 @@
     .k-i-checkmark::before {content: "\e118";}
     .k-i-check-outline::before {content: "\e119";}
     .k-i-checkmark-outline::before {content: "\e119";}
+    .k-i-success::before {content: "\e119";}
     .k-i-check-circle::before {content: "\e11a";}
     .k-i-checkmark-circle::before {content: "\e11a";}
     .k-i-close::before {content: "\e11b";}
@@ -688,6 +690,9 @@
         line-height: 0;
         text-align: center;
         -ms-high-contrast-adjust: none;
+    }
+    .k-image {
+        display: inline-block;
     }
     // sass-lint:enable single-line-per-selector
 }

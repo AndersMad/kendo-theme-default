@@ -36,6 +36,19 @@
     table.k-widget { display: table; }
 
 
+    // Overlay
+    .k-overlay {
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: .5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10001;
+    }
+
+
     // RTL
     .k-rtl {
         direction: rtl;
@@ -58,7 +71,6 @@
         color: inherit;
         text-decoration: none;
     }
-
 
     // Outline
     .k-content {
@@ -93,9 +105,34 @@
     // Flipping
     .k-flip-h { transform: scaleX(-1); }
     .k-flip-v { transform: scaleY(-1); }
+    .k-flip-h.k-flip-v { transform: scale(-1, -1); }
 
 }
 
+
+// virtual scrollbar
+.k-scrollbar {
+    position: absolute;
+    overflow: scroll;
+}
+
+.k-scrollbar-vertical {
+    top: 0;
+    right: 0;
+    width: 17px; /* scrollbar width */
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.k-touch-scrollbar {
+    display: none;
+    position: absolute;
+    z-index: 200000;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #8a8a8a;
+    background-color: #858585;
+}
 
 @include exports( "common/theme" ) {
 
@@ -264,7 +301,10 @@
 @include exports( "common/lines" ) {
 
     // Lines
-    .k-line {}
+    .k-line {
+        background-color: currentColor;
+        border-color: currentColor;
+    }
     .k-line-h,
     .k-line-v {
         position: absolute;
@@ -278,19 +318,16 @@
     .k-arrow-w {
         width: 0;
         height: 0;
-        border-width: 5px;
-        border-style: solid;
-        border-top-color: transparent;
-        border-bottom-color: transparent;
+        border: 5px solid transparent;
         position: absolute;
         top: -4px;
     }
     .k-arrow-e {
-        border-right-color: transparent;
+        border-left-color: currentColor;
         right: -6px;
     }
     .k-arrow-w {
-        border-left-color: transparent;
+        border-right-color: currentColor;
         left: -6px;
     }
 
@@ -381,51 +418,48 @@
         opacity: .3;
     }
 
-    $loading-stroke-width: 2px !default;
-    $loading-size: $icon-size - $loading-stroke-width !default;
-    $loading-speed: 2s !default;
-    $loading-color: $accent;
-    $loading-outer-size: ($loading-size + ($loading-stroke-width * 2));
-    $loading-half-size: ($loading-outer-size / 2) !default;
-
-    .k-icon.k-i-loading {
+    // Loading indicator
+    .k-i-loading {
         position: relative;
-        width: $loading-size;
-        height: $loading-size;
-        border: 2px solid $bg-color;
-        box-shadow: inset 0 0 0 $loading-stroke-width $loading-color;
-        border-radius: 50%;
-        box-sizing: content-box;
-
-        &::before,
-        &::after {
-            content: "";
-        }
+        background-color: transparent;
+        box-sizing: border-box;
+        color: currentColor;
     }
 
     .k-i-loading::before,
     .k-i-loading::after {
         position: absolute;
-        width:  $loading-half-size;
-        height: $loading-outer-size;
-        background: $bg-color;
-    }
-    .k-i-loading::before {
-        border-radius: $loading-outer-size 0 0 $loading-outer-size;
-        top: -($loading-stroke-width);
-        left: -($loading-stroke-width);
-        transform-origin: $loading-half-size $loading-half-size;
-        animation: k-loading-animation $loading-speed infinite ease 1.5s;
-    }
-    .k-i-loading::after {
-        border-radius: 0 $loading-outer-size $loading-outer-size 0;
-        top: -($loading-stroke-width);
-        left: ($loading-size / 2);
-        transform-origin: 0 $loading-half-size;
-        animation: k-loading-animation $loading-speed infinite ease;
+        top: 50%;
+        left: 50%;
+        display: inline-block;
+        content: "";
+        box-sizing: inherit;
+        border-radius: 50%;
+        border-width: .03em;
+        border-style: solid;
+        border-color: currentColor;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        background-color: transparent;
     }
 
-    @keyframes k-loading-animation {
+    .k-i-loading::before {
+        margin-top: -.5em;
+        margin-left: -.5em;
+        width: 1em;
+        height: 1em;
+        animation: k-loading-animation .7s linear infinite;
+    }
+
+    .k-i-loading::after {
+        margin-top: -.25em;
+        margin-left: -.25em;
+        width: .5em;
+        height: .5em;
+        animation: k-loading-animation reverse 1.4s linear infinite;
+    }
+
+    @keyframes k-loading-animation  {
         0% {
             transform: rotate(0deg);
         }
@@ -433,7 +467,6 @@
             transform: rotate(360deg);
         }
     }
-
 }
 
 

@@ -1,16 +1,8 @@
 @include exports("splitter/theme") {
+
     $splitter-text: $widget-text;
 
-    .k-splitter {
-        .k-resize-handle {
-            background-color: $splitter-text;
-        }
-
-        .k-icon.k-collapse-prev,
-        .k-icon.k-collapse-next {
-            color: $splitter-text;
-        }
-    }
+    .k-splitter {}
 
     // Splitbar
     .k-splitbar {
@@ -18,26 +10,10 @@
 
         &:active,
         &.k-state-focused {
-            @include appearance( pressed-button );
-
-            .k-icon {
-                color: $button-pressed-text;
-            }
-
-            .k-resize-handle {
-                background-color: $button-pressed-text;
-            }
-        }
-
-        .k-icon {
-            color: $button-text;
-        }
-
-        .k-resize-handle {
-            background-color: $button-text;
+            color: $selected-text;
+            background: $selected-bg;
         }
     }
-
     .k-splitbar-horizontal-hover,
     .k-splitbar-vertical-hover {
         @include appearance( hovered-button );
@@ -46,4 +22,5 @@
     .k-ghost-splitbar {
         @include appearance( hovered-button );
     }
+
 }

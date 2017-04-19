@@ -42,10 +42,20 @@
             background-color: $accent;
             color: $accent-contrast;
         }
+    }
 
+    .k-textbox,
+    .k-input {
         &::selection {
             background-color: $accent;
             color: $accent-contrast;
+        }
+
+        .k-state-disabled & {
+            &::selection {
+                color: $input-text;
+                background-color: transparent;
+            }
         }
     }
 

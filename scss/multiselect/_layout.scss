@@ -2,8 +2,7 @@
 
     // Base
     .k-multiselect {
-        border-width: 1px;
-        border-style: solid;
+        @include border-radius( $border-radius );
         width: 100%;
 
         // Compact
@@ -14,13 +13,37 @@
         .k-loading-hidden {
             visibility: hidden;
         }
-    }
 
+        &[dir='rtl'],
+        .k-rtl & {
+            li.k-button {
+                float: right;
+            }
+
+            .k-multiselect-wrap {
+                padding-left: ($padding-x * 3);
+                padding-right: 0;
+
+                .k-searchbar {
+                    float: right;
+                }
+
+                .k-button {
+                    margin: $padding-y-sm $padding-y-sm 0 0;
+                }
+
+                .k-i-loading {
+                    left: $padding-x;
+                    right: auto;
+                }
+            }
+        }
+    }
 
     .k-multiselect-wrap {
         min-height: calc( #{$input-inner-calc-size} );
-        border-width: 0;
         padding-right: ($padding-x * 3);
+        cursor: text;
 
         // Token list
         ul {
@@ -33,13 +56,14 @@
 
         // Token
         .k-button {
-            padding: ($button-padding-y / 2) ($button-padding-x / 2);
+            padding: ($button-padding-y-sm / 2) ($button-padding-x / 2);
             margin: $padding-y-sm 0 0 $padding-y-sm;
             cursor: default;
             display: inline-flex;
             flex-direction: row;
             align-items: center;
             line-height: inherit;
+            white-space: normal;
 
             .k-select {
                 display: flex;
@@ -52,11 +76,11 @@
             }
         }
 
-        .k-searchbar
-        .k-input {
-            display: inline-block;
-            width: auto;
+        .k-searchbar {
+            // search bar must be floated to align after any selected tags
+            // (or align below them, if space is not available)
             float: left;
+            width: auto;
         }
 
         // Icons
