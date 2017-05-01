@@ -16,6 +16,8 @@
         min-width: 450px;
         position: fixed;
 
+        // fix for FF flexbox bug in RTL
+        width: 1px;
 
         // Centered
         &.k-dialog-centered {
